@@ -1,0 +1,21 @@
+Event handeling 
+funtion can be passed as value on event.
+it should be declared i.e handelPrevious 
+not called i.e handelPrevious()
+if above is used the it should be ()=>handelPrevious()
+
+State: "Component's Memory" , it can be called as tool
+data that comp can hold  necessary info over time , and it need to remember through out life Cycle.
+updating comp state triggers react Re-render the compom=net
+
+1:  updates the component's view (by rendering)
+2:persist local veriables b/w renders
+
+UseState variable is hook in react
+Note :all hooks in raect starta with "use"
+
+Mechaniscs of state:
+1 since react is declarative i.e we don't manupulated dom directly
+2view is upadte bu re-rendering the comp ,it will be done when state is updated , so to update view we will have to update state.
+
+REACT RECATS TO STATE CHANGES BY RE-RENDERING THE UI
