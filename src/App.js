@@ -17,6 +17,23 @@ function App() {
   function handelNext() {
     if (step < 3) setStep(step + 1);
   }
+  function Button({ textcolor, bgcolor, onClick, children }) {
+    return (
+      <button
+        style={{ color: textcolor, backgroundColor: bgcolor }}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  }
+  function StepMessage({ step, children }) {
+    return (
+      <div className="message">
+        <h3>Step {step}:</h3> {children}
+      </div>
+    );
+  }
   return (
     <>
       <div className="close" onClick={() => setIsOpen(!isOpen)}>
@@ -26,30 +43,25 @@ function App() {
         <div className="steps">
           <div className="numbers">
             <div className={step === 1 ? "active" : ""}>1 </div>
-            <div className={step === 3 ? "active" : ""}>3</div>
             <div className={step === 2 ? "active" : ""}>2</div>
+            <div className={step === 3 ? "active" : ""}>3</div>
           </div>
 
-          <p className="message">
+          {/* <p className="message">
             Step {step}:{messages[step - 1]}
-          </p>
+          </p> */}
+          <StepMessage step={step}> {messages[step - 1]}</StepMessage>
           <div className="buttons">
-            <button
-              style={{ color: "#fff", backgroundColor: "#7950f2" }}
-              onClick={handelPreveous}
-            >
-              Previous
-            </button>
-            <button
-              style={{ color: "#fff", backgroundColor: "#7950f2" }}
-              onClick={handelNext}
-            >
-              Next
-            </button>
+            <Button textcolor="#fff" bgcolor="#7950f2" onClick={handelPreveous}>
+              <span>⬅️</span> Previous
+            </Button>
+            <Button textcolor="#fff" bgcolor="#7950f2" onClick={handelNext}>
+              Next<span>➡️</span>
+            </Button>
           </div>
         </div>
       )}
-      <Counter />
+      {/* <Counter /> */}
     </>
   );
 }
@@ -59,7 +71,7 @@ function Counter() {
   let [count, setCount] = useState(0);
   let today = new Date();
   // const date = new Date(today);
-  today.setDate(today.getDate()+ count)
+  today.setDate(today.getDate() + count);
   const formattedDate = format(today, "EEE MMM dd yyyy"); // Mon Jun 21 2027
 
   // formattedDate.setDate(formattedDate.getDate() + count);
@@ -88,7 +100,7 @@ function Counter() {
             color: "#fff",
             backgroundColor: "#7950f2",
             alignItems: "center",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
           onClick={handelStepnCount}
         >
